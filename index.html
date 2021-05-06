@@ -190,7 +190,7 @@
     <h1 class="text-center" style=" color: #800000; font-family: 'Times New Roman', Times, serif;">Contact me</h1>
     <div class="row">
         <div class="col-md-12">
-        <form id="submit-form"  action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScPcDNnUqxYigzWxQexYucDDLQ14xmiCaNdrv7PxSVsvj48_A/formResponse">
+        <form id="submit-form"  action="">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Name</label>
@@ -252,6 +252,25 @@
     </div>
 </div>
 </footer>
+<script>
+  $("#submit-form").submit((e)=>{
+      e.preventDefault()
+      $.ajax({
+          url:"https://docs.google.com/forms/u/0/d/e/1FAIpQLScPcDNnUqxYigzWxQexYucDDLQ14xmiCaNdrv7PxSVsvj48_A/formResponse",
+          data:$("#submit-form").serialize(),
+          method:"post",
+          success:function (response){
+              alert("Form submitted successfully")
+              window.location.reload()
+              //window.location.href="https://google.com"
+          },
+          error:function (err){
+              alert("Something Error")
+
+          }
+      })
+  })
+</script>
 
 
 
