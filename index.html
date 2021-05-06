@@ -190,7 +190,7 @@
     <h1 class="text-center" style=" color: #800000; font-family: 'Times New Roman', Times, serif;">Contact me</h1>
     <div class="row">
         <div class="col-md-12">
-        <form id="gform"  method="POST" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScPcDNnUqxYigzWxQexYucDDLQ14xmiCaNdrv7PxSVsvj48_A/formResponse">
+        <form id="submit-form"  action="">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Name</label>
@@ -259,6 +259,24 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+ <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://docs.google.com/forms/u/0/d/e/1FAIpQLScPcDNnUqxYigzWxQexYucDDLQ14xmiCaNdrv7PxSVsvj48_A/formResponse",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="index.html"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 </html>
